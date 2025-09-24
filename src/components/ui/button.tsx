@@ -21,6 +21,8 @@ const buttonVariants = cva(
         link: 'text-primary underline-offset-4 hover:underline',
         elevated:
           'bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] -translate-x-[2px] -translate-y-[2px] transition-all active:-translate-x-[0px] active:-translate-y-[0px] active:shadow-[0px]',
+        hoverElevated:
+          'bg-white hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-[2px] hover:-translate-y-[2px] transition-all active:-translate-x-[0px] active:-translate-y-[0px] active:shadow-[0px]',
       },
       size: {
         default: 'h-12 px-4 py-2 has-[>svg]:px-3',
@@ -33,7 +35,7 @@ const buttonVariants = cva(
       variant: 'default',
       size: 'default',
     },
-  }
+  },
 )
 
 function Button({
