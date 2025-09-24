@@ -4,6 +4,7 @@ import { SearchFilters } from './search-filters'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import { Category } from '@/payload-types'
+import { CustomCategory } from './types'
 
 export default async function HomeLayout({
   children,
@@ -23,9 +24,10 @@ export default async function HomeLayout({
         exists: false,
       },
     },
+    sort: 'name',
   })
 
-  const formattedData = data.docs.map((doc) => ({
+  const formattedData: CustomCategory[] = data.docs.map((doc) => ({
     ...doc,
     subcategories: (doc.subcategories?.docs ?? []).map((doc) => ({
       // because of 'depth:1' we know "doc" will be a type of "Category"
