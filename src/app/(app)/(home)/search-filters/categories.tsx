@@ -1,15 +1,15 @@
 'use client'
 
-import { Category } from '@/payload-types'
 import { CategoryDropdown } from './category-dropdown'
 import { useEffect, useRef, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import { ListFilterIcon } from 'lucide-react'
 import { CategoriesSidebar } from './categories-sidebar'
+import { CategoriesGetManyOutput } from '@/modules/categories/type'
 
 interface CategoriesProps {
-  data: any
+  data: CategoriesGetManyOutput
 }
 
 export const Categories = ({ data }: CategoriesProps) => {
@@ -23,7 +23,7 @@ export const Categories = ({ data }: CategoriesProps) => {
 
   const activeCategory = 'all'
   const activeCategoryIndex = data.findIndex(
-    (cat: Category) => cat.slug === activeCategory,
+    (cat) => cat.slug === activeCategory,
   )
   const isActiveCategoryHidden =
     activeCategoryIndex >= visibleCount && activeCategoryIndex !== -1
@@ -62,7 +62,6 @@ export const Categories = ({ data }: CategoriesProps) => {
       <CategoriesSidebar
         open={isSidebarOpen}
         onOpenChange={setIsSidebarOpen}
-        data={data}
       />
 
       {/* hidden div to measure all items width*/}
@@ -71,7 +70,7 @@ export const Categories = ({ data }: CategoriesProps) => {
         className="absolute opacity-0 pointer-events-none flex"
         style={{ position: 'fixed', top: -9999, left: -9999 }}
       >
-        {data.map((category: Category) => (
+        {data.map((category) => (
           <div key={category.id}>
             <CategoryDropdown
               category={category}
@@ -89,7 +88,7 @@ export const Categories = ({ data }: CategoriesProps) => {
         onMouseLeave={() => setIsAnyHovered(false)}
         className="flex flex-nowrap items-center"
       >
-        {data.slice(0, visibleCount).map((category: Category) => (
+        {data.slice(0, visibleCount).map((category) => (
           <div key={category.id}>
             <CategoryDropdown
               category={category}
@@ -104,8 +103,8 @@ export const Categories = ({ data }: CategoriesProps) => {
             className={cn(
               'h-11 px-4 bg-transparent border-transparent rounded-full hover:bg-white hover:border-primary text-black',
               isActiveCategoryHidden &&
-                !isAnyHovered &&
-                'bg-white border-primary',
+              !isAnyHovered &&
+              'bg-white border-primary',
             )}
             onClick={() => setIsSidebarOpen(true)}
           >
