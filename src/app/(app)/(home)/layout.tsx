@@ -4,7 +4,7 @@ import { getQueryClient, trpc } from '@/trpc/server'
 
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
-import { SearchFilters, SearchFiltersSkeleton } from './search-filters'
+import { SearchFilters, SearchFiltersSkeleton } from '../../../components/search-filters'
 import { Suspense } from 'react'
 
 
