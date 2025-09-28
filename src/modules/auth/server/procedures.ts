@@ -8,7 +8,6 @@ import { generateAuthCookie } from '../utils'
 export const authRouter = createTRPCRouter({
   session: baseProcedure.query(async ({ ctx }) => {
     const headers = await getHeaders()
-
     const session = await ctx.payload.auth({ headers })
     return session
   }),
