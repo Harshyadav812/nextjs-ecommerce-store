@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from './ui/sheet'
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from '../../../../components/ui/sheet'
 import { ScrollArea } from '@radix-ui/react-scroll-area'
 import { useTRPC } from '@/trpc/client'
 import { useQuery } from '@tanstack/react-query'

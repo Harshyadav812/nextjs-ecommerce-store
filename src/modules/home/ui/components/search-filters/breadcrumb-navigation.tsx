@@ -1,7 +1,7 @@
 
 
 import Link from 'next/link'
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '../ui/breadcrumb'
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '../../../../../components/ui/breadcrumb'
 
 interface Props {
   activeCategoryName?: string | null
