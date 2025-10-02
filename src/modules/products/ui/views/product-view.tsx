@@ -116,23 +116,24 @@ export const ProductView = ({ productId, tenantSlug }: ProductViewProps) => {
             <div className="border-t lg:border-t-0 lg:border-l h-full">
               <div className="flex flex-col gap-4 p-6 border-b">
                 <div className="flex flex-row items-center gap-2">
-                  {/* <Button
-                    variant={'elevated'}
-                    className="flex-1 bg-blue-400"
-                  >
-                    Add to cart
-                  </Button> */}
-                  <CartButton tenantSlug={tenantSlug} productId={productId} />
+
+                  <CartButton
+                    isPurchased={data.isPurchased}
+                    tenantSlug={tenantSlug}
+                    productId={productId}
+                  />
 
                   <Button
-                    variant={'elevated'}
+                    variant={'hoverElevated'}
                     className="size-12"
                     onClick={() => { }}
                     disabled={false}
                   >
                     <LinkIcon />
                   </Button>
+
                 </div>
+
                 <p className="text-center font-medium">
                   {data.refundPolicy === 'no-refunds'
                     ? "No refunds" : `${data.refundPolicy} money back guarantee`

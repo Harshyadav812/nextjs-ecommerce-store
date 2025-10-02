@@ -43,7 +43,7 @@ export const SearchInput = ({ disabled }: Props) => {
           variant={"hoverElevated"}
           className='h-9'
         >
-          <Link href={"/library"}>
+          <Link prefetch href={"/library"}>
             <BookmarkCheckIcon />
             Library
           </Link>
