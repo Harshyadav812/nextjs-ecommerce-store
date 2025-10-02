@@ -43,7 +43,6 @@ export const CheckoutView = ({ tenantSlug }: CheckoutViewProps) => {
 
   useEffect(() => {
     if (states.success) {
-      setStates({ success: false, cancel: false })
       clearCart()
       router.push('/products')
     }
