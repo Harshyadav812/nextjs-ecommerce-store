@@ -17,9 +17,12 @@ export const productsRouter = createTRPCRouter({
     .query(async ({ ctx, input }) => {
       const headers = await getHeaders()
       const session = await ctx.payload.auth({ headers })
+
       const product = await ctx.payload.findByID({
         collection: 'products',
         id: input.id,
+        depth: 2,
+        select: { content: false },
       })
 
       let isPurchased = false
@@ -202,6 +205,9 @@ export const productsRouter = createTRPCRouter({
         sort,
         page: input.cursor,
         limit: input.limit,
+        select: {
+          content: false,
+        },
       })
 
       // Fetch all reviews in a single query
