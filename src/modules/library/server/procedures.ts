@@ -5,6 +5,7 @@ import z from 'zod'
 
 import { DEFAULT_LIMIT } from '@/constants'
 import { TRPCError } from '@trpc/server'
+import { aggregateReviewsByProducts } from '../utils'
 
 export const libraryRouter = createTRPCRouter({
   getOne: protectedProcedure
@@ -78,7 +79,9 @@ export const libraryRouter = createTRPCRouter({
         },
       })
 
-      const productIds = ordersData.docs.map((order) => order.product)
+      const productIds = ordersData.docs.map((order) =>
+        typeof order.product === 'string' ? order.product : order.product.id,
+      )
 
       const productsData = await ctx.payload.find({
         collection: 'products',
@@ -90,9 +93,28 @@ export const libraryRouter = createTRPCRouter({
         },
       })
 
+      const reviewSummaries = await aggregateReviewsByProducts(
+        ctx.payload,
+        productIds,
+      )
+
+      // map over products WITHOUT making additional queries
+      const dataWithSummarizedReviews = productsData.docs.map((doc) => {
+        const summary = reviewSummaries.get(doc.id) || {
+          reviewCount: 0,
+          reviewRating: 0,
+        }
+
+        return {
+          ...doc,
+          reviewCount: summary.reviewCount,
+          reviewRating: summary.reviewRating,
+        }
+      })
+
       return {
         ...productsData,
-        docs: productsData.docs.map((doc) => ({
+        docs: dataWithSummarizedReviews.map((doc) => ({
           ...doc,
           image: doc.image as Media | null,
           tenant: doc.tenant as Tenant & { image: Media | null },

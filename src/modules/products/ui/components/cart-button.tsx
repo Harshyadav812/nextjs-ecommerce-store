@@ -17,7 +17,7 @@ export const CartButton = ({ tenantSlug, productId, isPurchased }: Props) => {
       <Button
         variant={'hoverElevated'}
         asChild
-        className="flex-1 font-medium bg-pink-400"
+        className="flex-1 font-medium bg-white hover:bg-pink-400"
       >
         <Link prefetch href={`/library/${productId}`}>
           View in Library
