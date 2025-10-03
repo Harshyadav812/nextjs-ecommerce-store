@@ -11,9 +11,9 @@ const nextConfig: NextConfig = {
     root: path.join(__dirname, '..'),
   },
 
-  experimental: {
-    reactCompiler: true,
-  },
+  // experimental: {
+  //   reactCompiler: true,
+  // },
 }
 
 export default withPayload(nextConfig)

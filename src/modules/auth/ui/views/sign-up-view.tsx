@@ -94,7 +94,7 @@ export const SingUpView = () => {
                     <Input {...field} />
                   </FormControl>
                   <FormDescription
-                    className={cn("hidden", showPreview && "block")}
+                    className={cn(showPreview ? "block" : "hidden")}
                   >
                     Your store will be available at&nbsp;
                     <strong>{username}</strong>.shop.com
