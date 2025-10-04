@@ -9,10 +9,9 @@ import type { SearchParams } from "nuqs";
 interface Props {
   searchParams: Promise<SearchParams>
   params: Promise<{ slug: string }>
-  narrowView?: boolean
 }
 
-const Page = async ({ params, searchParams, narrowView }: Props) => {
+const Page = async ({ params, searchParams }: Props) => {
 
   const { slug } = await params
   const filters = await loadProductFilters(searchParams)
@@ -28,7 +27,7 @@ const Page = async ({ params, searchParams, narrowView }: Props) => {
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <ProductListView tenantSlug={slug} narrowView />
+      <ProductListView tenantSlug={slug} />
     </HydrationBoundary>
   )
 }

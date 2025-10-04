@@ -1,4 +1,3 @@
-import { DEFAULT_LIMIT } from '@/constants'
 import { createTRPCRouter, protectedProcedure } from '@/trpc/init'
 import { TRPCError } from '@trpc/server'
 import z from 'zod'

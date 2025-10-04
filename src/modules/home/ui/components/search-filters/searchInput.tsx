@@ -8,7 +8,6 @@ import { Button } from '@/components/ui/button'
 import { useTRPC } from '@/trpc/client'
 import { useQuery } from '@tanstack/react-query'
 import Link from 'next/link'
-import { cn } from '@/lib/utils'
 
 interface Props {
   disabled?: boolean

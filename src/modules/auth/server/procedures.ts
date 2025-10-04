@@ -4,7 +4,6 @@ import { TRPCError } from '@trpc/server'
 
 import { loginSchema, registerSchema } from '../schemas'
 import { generateAuthCookie } from '../utils'
-import { tenantField } from '@payloadcms/plugin-multi-tenant/fields'
 import { stripe } from '@/lib/stripe'
 
 export const authRouter = createTRPCRouter({
