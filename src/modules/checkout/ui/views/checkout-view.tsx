@@ -20,7 +20,7 @@ export const CheckoutView = ({ tenantSlug }: CheckoutViewProps) => {
   const router = useRouter()
   const [states, setStates] = useCheckoutStates()
 
-  const { productIds, clearAllCarts, removeProduct, clearCart } = useCart(tenantSlug)
+  const { productIds, removeProduct, clearCart } = useCart(tenantSlug)
 
   const trpc = useTRPC()
   const queryClient = useQueryClient()
@@ -58,7 +58,7 @@ export const CheckoutView = ({ tenantSlug }: CheckoutViewProps) => {
       clearCart()
       toast.warning('Invalid products found, cart cleared')
     }
-  }, [error, clearAllCarts])
+  }, [error, clearCart])
 
   if (isLoading) {
     return (

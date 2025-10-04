@@ -1,6 +1,5 @@
 import { cn } from "@/lib/utils"
 import { StarIcon } from "lucide-react"
-import { Rationale } from "next/font/google"
 
 
 interface StarRatingProps {

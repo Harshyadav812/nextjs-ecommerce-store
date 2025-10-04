@@ -1,5 +1,4 @@
 import { CheckoutView } from "@/modules/checkout/ui/views/checkout-view"
-import { PathParamsContext } from "next/dist/shared/lib/hooks-client-context.shared-runtime"
 
 interface PageProps {
   params: Promise<{ slug: string }>
