@@ -1,6 +1,7 @@
 import { Poppins } from 'next/font/google'
-import { Check, X, TrendingUp, CreditCard, Zap, Shield } from 'lucide-react'
+import { Check, TrendingUp, CreditCard, Zap, Shield } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import Link from 'next/link'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -39,7 +40,7 @@ export default function PricingPage() {
                 <span className={cn('text-2xl lg:text-3xl', poppins.className)}>per sale</span>
               </div>
               <p className="text-lg font-medium text-gray-600 max-w-md mx-auto">
-                Only pay when you make money. That's it.
+                Only pay when you make money. That&apos;s it.
               </p>
             </div>
 
@@ -55,12 +56,12 @@ export default function PricingPage() {
 
             {/* CTA Button */}
             <div className="px-8 lg:px-12 pb-10 pt-4">
-              <a
+              <Link
                 href="/sign-up"
                 className="w-full inline-flex items-center justify-center px-8 py-4 text-lg lg:text-xl font-bold bg-black text-white border-4 border-black rounded-lg shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-[2px] hover:-translate-y-[2px] active:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:translate-x-[2px] active:translate-y-[2px] transition-all"
               >
                 Start Selling Now
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -201,12 +202,12 @@ export default function PricingPage() {
           <p className="text-xl lg:text-2xl font-medium mb-10">
             Start selling in minutes. No credit card required to sign up.
           </p>
-          <a
+          <Link
             href="/sign-up"
             className="inline-flex items-center justify-center px-8 py-4 text-xl font-bold bg-black text-white border-4 border-black rounded-md shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-[2px] hover:-translate-y-[2px] active:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:translate-x-[2px] active:translate-y-[2px] transition-all"
           >
             Create Your Store
-          </a>
+          </Link>
         </div>
       </div>
     </div>

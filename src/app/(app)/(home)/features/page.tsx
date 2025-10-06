@@ -14,6 +14,7 @@ import {
   Smartphone
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import Link from 'next/link'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -141,18 +142,18 @@ export default function FeaturesPage() {
             Join hundreds of vendors already selling on our platform
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
+            <Link
               href="/sign-up"
               className="inline-flex items-center justify-center px-8 py-4 text-xl font-bold bg-black text-white border-4 border-black rounded-md shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-[2px] hover:-translate-y-[2px] active:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:translate-x-[2px] active:translate-y-[2px] transition-all"
             >
               Start Selling
-            </a>
-            <a
+            </Link>
+            <Link
               href="/"
               className="inline-flex items-center justify-center px-8 py-4 text-xl font-bold bg-white text-black border-4 border-black rounded-md shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-[2px] hover:-translate-y-[2px] active:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:translate-x-[2px] active:translate-y-[2px] transition-all"
             >
               Browse Products
-            </a>
+            </Link>
           </div>
         </div>
       </div>
