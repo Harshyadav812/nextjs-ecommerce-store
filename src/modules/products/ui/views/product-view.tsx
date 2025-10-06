@@ -45,8 +45,8 @@ export const ProductView = ({ productId, tenantSlug }: ProductViewProps) => {
 
   return (
     <div className="px-4 lg:px-12 py-10">
-      <div className="border rounded-sm bg-white overflow-hidden">
-        <div className="relative aspect-[3.9] border-b">
+      <div className="border-3 border-black rounded-lg bg-white overflow-hidden shadow-[5px_5px_0px_0px_rgba(0,0,0,1)]">
+        <div className="relative aspect-[3.9] border-b-4 border-black">
           <Image
             src={data.image?.url || '/placeholder.png'}
             alt={data.name}
@@ -56,31 +56,31 @@ export const ProductView = ({ productId, tenantSlug }: ProductViewProps) => {
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-6">
           <div className="col-span-4">
-            <div className="p-6">
-              <h1 className="text-4xl font-medium">{data.name}</h1>
+            <div className="p-6 pb-4">
+              <h1 className="text-3xl lg:text-4xl font-bold">{data.name}</h1>
             </div>
-            <div className="border-y flex">
-              <div className="px-6 py-4 flex items-center justify-center border-r">
-                <div className="px-2 py-1 bg-blue-400 w-fit">
-                  <p className="text-base font-medium">{formatCurrency(data.price)}</p>
+            <div className="border-y-4 border-black flex flex-wrap">
+              <div className="px-6 py-4 flex items-center justify-center border-r-4 border-black">
+                <div className="px-3 py-2 bg-blue-400 border-2 border-black rounded-md shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                  <p className="text-base font-bold">{formatCurrency(data.price)}</p>
                 </div>
               </div>
 
-              <div className="px-6 py-4 flex items-center justify-center lg:border-r">
+              <div className="px-6 py-4 flex items-center justify-center lg:border-r-4 border-black">
                 <Link
                   href={generateTenantURL(tenantSlug)}
-                  className="flex items-center gap-2"
+                  className="flex items-center gap-2 hover:opacity-70 transition-opacity"
                 >
                   {data.tenant.image?.url && (
                     <Image
                       src={data.tenant.image.url}
                       alt={data.tenant.name}
-                      width={20}
-                      height={20}
-                      className="rounded-full border shrink-0 size-[20px]"
+                      width={22}
+                      height={22}
+                      className="rounded-full border-2 border-black shrink-0 size-[22px]"
                     />
                   )}
-                  <p className="text-base underline font-medium">{data.tenant.name}</p>
+                  <p className="text-base underline font-bold">{data.tenant.name}</p>
                 </Link>
               </div>
 
@@ -90,25 +90,25 @@ export const ProductView = ({ productId, tenantSlug }: ProductViewProps) => {
                     rating={data.reviewRating}
                     iconClassName="size-4"
                   />
-                  <p className="text-base font-medium">
+                  <p className="text-base font-bold">
                     {data.reviewCount} ratings
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="block lg:hidden px-6 py-4 items-center justify-center border-b">
+            <div className="block lg:hidden px-6 py-4 items-center justify-center border-b-4 border-black">
               <div className="flex items-center gap-2">
                 <StarRating
                   rating={data.reviewRating}
                   iconClassName="size-4" />
-                <p className="text-base font-medium">
+                <p className="text-base font-bold">
                   {data.reviewCount} ratings
                 </p>
               </div>
             </div>
 
-            <div className="p-6">
+            <div className="p-6 prose prose-lg max-w-none">
               {data.description ? (
                 <RichText data={data.description} />
               ) :
@@ -120,9 +120,9 @@ export const ProductView = ({ productId, tenantSlug }: ProductViewProps) => {
           </div>
 
           <div className="col-span-2">
-            <div className="border-t lg:border-t-0 lg:border-l h-full">
-              <div className="flex flex-col gap-4 p-6 border-b">
-                <div className="flex flex-row items-center gap-2">
+            <div className="border-t-4 lg:border-t-0 lg:border-l-4 border-black h-full">
+              <div className="flex flex-col gap-4 p-6 border-b-4 border-black">
+                <div className="flex flex-row items-center gap-3">
 
                   <CartButton
                     isPurchased={data.isPurchased}
@@ -132,7 +132,7 @@ export const ProductView = ({ productId, tenantSlug }: ProductViewProps) => {
 
                   <Button
                     variant={'hoverElevated'}
-                    className="size-12"
+                    className="size-12 border-4"
                     onClick={() => {
                       setIsCopied(true)
                       navigator.clipboard.writeText(window.location.href)
@@ -148,32 +148,32 @@ export const ProductView = ({ productId, tenantSlug }: ProductViewProps) => {
 
                 </div>
 
-                <p className="text-center font-medium">
-                  {data.refundPolicy === 'no-refunds'
-                    ? "No refunds" : `${data.refundPolicy} money back guarantee`
-                  }
-                </p>
+                <div className="bg-yellow-300 border-2 border-black rounded-md p-3">
+                  <p className="text-center font-bold text-sm">
+                    {data.refundPolicy === 'no-refunds'
+                      ? "No refunds" : `${data.refundPolicy} money back guarantee`
+                    }
+                  </p>
+                </div>
               </div>
               <div className="p-6">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-xl font-medium">Ratings</h3>
-                  <div className="flex items-center gap-x-1 font-medium">
-                    <StarIcon className="size-4 fill-black" />
-                    <p>({data.reviewRating})</p>
-                    <p className="text-base">{data.reviewCount} ratings</p>
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-xl font-bold">Ratings</h3>
+                  <div className="flex items-center gap-x-1.5 font-bold">
+                    <StarIcon className="size-4 fill-black stroke-black" />
+                    <p>{data.reviewRating}</p>
+                    <p className="text-sm text-gray-600">({data.reviewCount})</p>
                   </div>
                 </div>
-                <div
-                  className="grid grid-cols-[auto_1fr_auto] gap-3 mt-4"
-                >
+                <div className="grid grid-cols-[auto_1fr_auto] gap-3">
                   {[5, 4, 3, 2, 1].map((stars) => (
                     <Fragment key={stars}>
-                      <div className="font-medium">{stars} {stars === 1 ? 'star' : 'stars'}</div>
+                      <div className="font-semibold text-sm">{stars} {stars === 1 ? 'star' : 'stars'}</div>
                       <Progress
                         value={data.ratingDistribution[stars]}
-                        className="h-[0.8lh]"
+                        className="h-[0.8lh] border-2 border-black"
                       />
-                      <div className="font-medium">
+                      <div className="font-bold text-sm">
                         {data.ratingDistribution[stars]}%
                       </div>
                     </Fragment>
@@ -191,8 +191,8 @@ export const ProductView = ({ productId, tenantSlug }: ProductViewProps) => {
 export const ProductViewSkeleton = () => {
   return (
     <div className="px-4 lg:px-12 py-10">
-      <div className="border rounded-sm bg-white overflow-hidden">
-        <div className="relative aspect-[3.9] border-b">
+      <div className="border-4 border-black rounded-lg bg-white overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+        <div className="relative aspect-[3.9] border-b-4 border-black">
           <Image
             src={'/placeholder.png'}
             alt={"Placeholder"}
