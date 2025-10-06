@@ -17,7 +17,7 @@ export const CartButton = ({ tenantSlug, productId, isPurchased }: Props) => {
       <Button
         variant={'hoverElevated'}
         asChild
-        className="flex-1 font-medium bg-white hover:bg-pink-400"
+        className="flex-1 font-bold bg-white hover:bg-pink-400 border-2"
       >
         <Link prefetch href={`/library/${productId}`}>
           View in Library
@@ -29,7 +29,7 @@ export const CartButton = ({ tenantSlug, productId, isPurchased }: Props) => {
   return (
     <Button
       variant={'elevated'}
-      className={cn("flex-1 bg-blue-400", cart.isProductInCart(productId) && 'bg-white')}
+      className={cn("flex-1 font-bold bg-blue-400 border-2", cart.isProductInCart(productId) && 'bg-green-300')}
       onClick={() => cart.toggleProduct(productId)}
     >
       {cart.isProductInCart(productId) ? 'Remove from Cart' : 'Add to Cart'}

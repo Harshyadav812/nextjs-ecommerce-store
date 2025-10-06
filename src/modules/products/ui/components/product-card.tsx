@@ -31,8 +31,8 @@ export const ProductCard = ({ id, name, imageUrl, tenantSlug, tenantImageUrl, re
   return (
     <Link
       href={`${generateTenantURL(tenantSlug)}/products/${id}`}>
-      <div className="hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-shadow border rounded-md bg-white overflow-hidden h-full flex flex-col">
-        <div className="relative aspect-square">
+      <div className="border-2 border-black hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-[2px] hover:-translate-y-[2px] transition-all rounded-lg bg-white overflow-hidden h-full flex flex-col">
+        <div className="relative aspect-square border-b-2 border-black">
           <Image
             alt={name}
             fill
@@ -40,33 +40,33 @@ export const ProductCard = ({ id, name, imageUrl, tenantSlug, tenantImageUrl, re
             className="object-cover"
           />
         </div>
-        <div className="p-4 border-y flex flex-col gap-3 flex-1">
-          <h2 className="text-lg font-medium line-clamp-4">{name}</h2>
+        <div className="p-4 flex flex-col gap-3 flex-1">
+          <h2 className="text-lg font-semibold line-clamp-2">{name}</h2>
           <div className="flex items-center gap-2" onClick={handleUserClick}>
             {tenantImageUrl && (
               <Image
                 alt={tenantSlug}
                 src={tenantImageUrl}
-                width={16}
-                height={16}
-                className="rounded-full border shrink-0 size-[16px]"
+                width={18}
+                height={18}
+                className="rounded-full border-2 border-black shrink-0 size-[18px]"
               />
             )}
-            <p className="text-sm underline font-medium">{tenantSlug}</p>
+            <p className="text-sm underline font-semibold hover:text-blue-600 transition-colors">{tenantSlug}</p>
           </div>
           {reviewCount > 0 ? (
-            <div className="flex items-center gap-1">
-              <StarIcon className="size-3.5 fill-black" />
-              <p className="text-sm font-medium">
+            <div className="flex items-center gap-1.5">
+              <StarIcon className="size-4 fill-black stroke-black" />
+              <p className="text-sm font-semibold">
                 {reviewRating} ({reviewCount})
               </p>
             </div>
           ) : null}
         </div>
 
-        <div className="p-4">
-          <div className="relative px-2 py-1 border bg-blue-300 w-fit">
-            <p className="text-md font-bold">
+        <div className="p-4 pt-0">
+          <div className="relative px-3 py-2 border-2 border-black bg-blue-300 w-fit rounded-md">
+            <p className="text-base font-bold">
               {formatCurrency(price)}
             </p>
           </div>
