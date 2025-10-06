@@ -10,7 +10,9 @@ export const config = {
      * 4. all roots files inside /public (e.g. /favicon.ico)
      */
 
-    '/((?!api/|_next/|_static/|_vercel|media/|[\\w-]+\\.\\w+).*)',
+    // '/((?!api/|_next/|_static/|_vercel|media/|[\\w-]+\\.\\w+).*)',
+
+    '/((?!api/|_next/|_static/|_vercel|media/|[\w-]+\.\w+).*)',
   ],
 }
 
