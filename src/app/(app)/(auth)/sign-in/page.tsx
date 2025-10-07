@@ -5,6 +5,7 @@ import { redirect } from "next/navigation"
 interface Props {
   searchParams: Promise<{
     redirect?: string
+    reason?: string
   }>
 }
 
@@ -20,7 +21,7 @@ const Page = async ({ searchParams }: Props) => {
 
   return (
     <div>
-      <SingInView redirectTo={params.redirect} />
+      <SingInView />
     </div>
   )
 }

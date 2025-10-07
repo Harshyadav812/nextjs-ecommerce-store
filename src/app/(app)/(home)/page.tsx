@@ -10,7 +10,6 @@ import { ProductListView } from "@/modules/products/ui/views/product-list-view"
 import { DEFAULT_LIMIT } from "@/constants"
 
 interface Props {
-
   searchParams: Promise<SearchParams>
 }
 

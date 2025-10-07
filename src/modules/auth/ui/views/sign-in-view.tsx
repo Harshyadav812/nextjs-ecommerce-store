@@ -16,11 +16,7 @@ import { cn } from "@/lib/utils"
 import { Input } from "@/components/ui/input"
 import { useTRPC } from "@/trpc/client"
 import { useRouter } from "next/navigation"
-
-
-interface Props {
-  redirectTo?: string
-}
+import { parseAsString, useQueryStates } from "nuqs"
 
 
 const poppins = Poppins({
@@ -28,11 +24,16 @@ const poppins = Poppins({
   weight: ['700'],
 })
 
-export const SingInView = ({ redirectTo }: Props) => {
+export const SingInView = () => {
   const router = useRouter()
+
+  const [{ redirect: redirectTo }] = useQueryStates({
+    redirect: parseAsString
+  })
 
   const trpc = useTRPC()
   const queryClient = useQueryClient()
+
 
   const login = useMutation(trpc.auth.login.mutationOptions({
     onError: (error) => {
@@ -40,7 +41,9 @@ export const SingInView = ({ redirectTo }: Props) => {
     },
     onSuccess: async () => {
       await queryClient.invalidateQueries(trpc.auth.session.queryFilter())
-      router.push("/")
+      toast.success('Login Successful')
+      router.push(redirectTo || "/")
+      router.refresh()
     }
   }))
 
@@ -54,16 +57,7 @@ export const SingInView = ({ redirectTo }: Props) => {
   })
 
   const onSumbit = (values: z.infer<typeof loginSchema>) => {
-    try {
-      login.mutate(values)
-      toast.success('Login Successful')
-      router.push(redirectTo || '/')
-      router.refresh()
-    } catch (error) {
-      if (error instanceof Error) {
-        toast.error(error.message)
-      }
-    }
+    login.mutate(values)
   }
 
   return (
