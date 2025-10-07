@@ -18,12 +18,17 @@ import { useTRPC } from "@/trpc/client"
 import { useRouter } from "next/navigation"
 
 
+interface Props {
+  redirectTo?: string
+}
+
+
 const poppins = Poppins({
   subsets: ['latin'],
   weight: ['700'],
 })
 
-export const SingInView = () => {
+export const SingInView = ({ redirectTo }: Props) => {
   const router = useRouter()
 
   const trpc = useTRPC()
@@ -49,7 +54,16 @@ export const SingInView = () => {
   })
 
   const onSumbit = (values: z.infer<typeof loginSchema>) => {
-    login.mutate(values)
+    try {
+      login.mutate(values)
+      toast.success('Login Successful')
+      router.push(redirectTo || '/')
+      router.refresh()
+    } catch (error) {
+      if (error instanceof Error) {
+        toast.error(error.message)
+      }
+    }
   }
 
   return (
